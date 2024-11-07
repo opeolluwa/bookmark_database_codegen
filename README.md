@@ -19,15 +19,20 @@ Mobile Vault Shared Database service
 
 ### Installing
 
-```sh
-cargo add --git https://github.com/opeolluwa/vault_database --no-default-features
+```toml
+[dependencies]
+vault_database = { git = "https://github.com/opeolluwa/vault_database", version = "0.1.0", features = [
+    "entities",
+    "migration",
+] }
+sea-orm = { version = "1.0.0-rc.5", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+] }
 ```
 
 ### Executing program
-
-```sh
-cargo add sea-orm
-```
 
 #### Using the migration
 
@@ -39,6 +44,14 @@ use migration::{Migrator, MigratorTrait};
 fn main(){
     Migrator::up(&connection, None).await?;
 }
+```
+
+#### Using entities
+
+```rust
+use vault_database::entities::prelude::*;
+use vault_database::entities::user_information::{self};
+use vault_database::entities::vault;
 ```
 
 code blocks for commands
