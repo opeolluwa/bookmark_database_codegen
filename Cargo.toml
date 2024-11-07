@@ -1,0 +1,17 @@
+[package]
+name = "vault_database"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = ["./entities", "./migration"]
+
+[dependencies]
+entities = { path = "./entities" }
+migration = { path = "./migration" }
+
+
+[features]
+default-features = ["entities"]
+migration = []
+entities = []
