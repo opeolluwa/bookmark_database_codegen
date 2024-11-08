@@ -9,7 +9,6 @@ pub struct Model {
     pub id: Uuid,
     pub title: String,
     pub description: String,
-    #[sea_orm(unique)]
     pub vault_id: Uuid,
     pub created_at: DateTimeWithTimeZone,
     pub updated_at: DateTimeWithTimeZone,
