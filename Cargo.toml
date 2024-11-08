@@ -7,8 +7,8 @@ edition = "2021"
 members = ["./entities", "./migration"]
 
 [dependencies]
-entities = { path = "./entities" }
-migration = { path = "./migration" }
+entities = { path = "./entities", version = "*" }
+migration = { path = "./migration", version = "*" }
 
 
 [features]
