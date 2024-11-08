@@ -1,6 +1,6 @@
 use sea_orm_migration::prelude::*;
 
-use crate::m20241024_230139_create_vault_entry_table::VaultEntry;
+use crate::{m20241024_230139_create_vault_entry_table::VaultEntry, TableName};
 
 #[derive(DeriveMigrationName)]
 pub struct Migration;
@@ -12,7 +12,7 @@ impl MigrationTrait for Migration {
         manager
             .alter_table(
                 Table::alter()
-                    .table(VaultEntry::Table)
+                    .table(TableName("vault_entries".to_string()))
                     .drop_column(VaultEntry::VaultId)
                     .to_owned(),
             )
@@ -25,7 +25,7 @@ impl MigrationTrait for Migration {
         manager
             .alter_table(
                 Table::alter()
-                    .table(VaultEntry::Table)
+                            .table(TableName("vault_entries".to_string()))
                     .add_column(ColumnDef::new(Alias::new("vault_id")).uuid())
                     .to_owned(),
             )

@@ -1,6 +1,6 @@
 [package]
 name = "vault_database"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 
 [workspace]
@@ -15,3 +15,13 @@ migration = { path = "./migration", version = "*" }
 default-features = ["entities"]
 migration = []
 entities = []
+
+
+[dev-dependencies]
+sea-orm = { version = "1.0.0-rc.5", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+] }
+tokio = { version = "1.41.1", features = ["full"] }
+
