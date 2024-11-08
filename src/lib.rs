@@ -3,9 +3,6 @@ pub use migration;
 
 #[cfg(test)]
 mod test {
-    use std::time::Duration;
-
-    use super::*;
 
     /// use an psql database to see the structure
     #[test]

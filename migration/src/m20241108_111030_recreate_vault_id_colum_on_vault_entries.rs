@@ -9,11 +9,12 @@ pub struct Migration;
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         // Replace the sample below with your own migration scripts
+
         manager
             .alter_table(
                 Table::alter()
                     .table(TableName("vault_entries".to_string()))
-                    .drop_column(VaultEntry::VaultId)
+                    .add_column(ColumnDef::new(Alias::new("vault_id")).uuid())
                     .to_owned(),
             )
             .await
@@ -26,7 +27,7 @@ impl MigrationTrait for Migration {
             .alter_table(
                 Table::alter()
                     .table(TableName("vault_entries".to_string()))
-                    .add_column(ColumnDef::new(Alias::new("vault_id")).uuid().unique_key())
+                    .drop_column(VaultEntry::VaultId)
                     .to_owned(),
             )
             .await
