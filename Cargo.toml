@@ -1,6 +1,6 @@
 [package]
 name = "bookmark_database_codegen"
-version = "0.5.0"
+version = "0.5.1"
 edition = "2021"
 
 [workspace]
@@ -8,11 +8,11 @@ members = ["./entities", "./migration"]
 
 [dependencies]
 entities = { path = "./entities", version = "*" }
-migration = { path = "./migration", version = "*" }
+# migration = { path = "./migration", version = "*" }
 
 
 [features]
-default-features = ["entities"]
+# default-features = ["entities"]
 migration = []
 entities = []
 
