@@ -20,11 +20,11 @@ impl MigrationTrait for Migration {
                     .col(string(UserInformation::Password))
                     .col(
                         date_time(UserInformation::CreatedAt)
-                            .default(Expr::current_timestamp()),
+                            .default(Expr::current_date()),
                     )
                     .col(
                         date_time(UserInformation::UpdatedAt)
-                            .default(Expr::current_timestamp()),
+                            .default(Expr::current_date()),
                     )
                     .to_owned(),
             )

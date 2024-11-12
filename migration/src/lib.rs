@@ -3,12 +3,8 @@ use std::fmt;
 pub use sea_orm_migration::prelude::*;
 
 mod m20220101_000001_create_table;
-mod m20241024_224838_create_vaults_database;
-mod m20241024_230139_create_vault_entry_table;
-mod m20241030_121715_rename_vault_entry_table;
-mod m20241108_095041_removeunique_key_from_vault_entries_vault_id;
-mod m20241108_111030_recreate_vault_id_colum_on_vault_entries;
-
+mod m20241024_224838_create_bookmark_collection_database;
+mod m20241024_230139_bookmark_collection_entry_table;
 
 pub struct TableName(String);
 impl sea_orm::Iden for TableName {
@@ -24,11 +20,8 @@ impl MigratorTrait for Migrator {
     fn migrations() -> Vec<Box<dyn MigrationTrait>> {
         vec![
             Box::new(m20220101_000001_create_table::Migration),
-            Box::new(m20241024_224838_create_vaults_database::Migration),
-            Box::new(m20241024_230139_create_vault_entry_table::Migration),
-            Box::new(m20241030_121715_rename_vault_entry_table::Migration),
-            Box::new(m20241108_095041_removeunique_key_from_vault_entries_vault_id::Migration),
-            Box::new(m20241108_111030_recreate_vault_id_colum_on_vault_entries::Migration),
+            Box::new(m20241024_224838_create_bookmark_collection_database::Migration),
+            Box::new(m20241024_230139_bookmark_collection_entry_table::Migration),
         ]
     }
 }

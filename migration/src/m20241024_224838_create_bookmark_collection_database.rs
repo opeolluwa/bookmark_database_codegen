@@ -10,24 +10,23 @@ impl MigrationTrait for Migration {
         manager
             .create_table(
                 Table::create()
-                    .table(Vault::Table)
+                    .table(BookmarkCollection::Table)
                     .if_not_exists()
-                    .col(uuid(Vault::Id).unique_key().primary_key().not_null())
-                    .col(string(Vault::Name).not_null())
-                    .col(string(Vault::Description))
-                    .col(uuid(Vault::UserId).not_null())
                     .col(
-                        date_time(Vault::CreatedAt)
-                            .default(Expr::current_timestamp()),
+                        uuid(BookmarkCollection::Id)
+                            .unique_key()
+                            .primary_key()
+                            .not_null(),
                     )
-                    .col(
-                        date_time(Vault::UpdatedAt)
-                            .default(Expr::current_timestamp()),
-                    )
+                    .col(string(BookmarkCollection::Name).not_null())
+                    .col(string(BookmarkCollection::Description))
+                    .col(uuid(BookmarkCollection::UserId).not_null())
+                    .col(date_time(BookmarkCollection::CreatedAt).default(Expr::current_date()))
+                    .col(date_time(BookmarkCollection::UpdatedAt).default(Expr::current_date()))
                     .foreign_key(
                         ForeignKey::create()
-                            .name("fk-user-vault-id")
-                            .from(Vault::Table, Vault::UserId)
+                            .name("fk-user-bookmark-collection-id")
+                            .from(BookmarkCollection::Table, BookmarkCollection::UserId)
                             .to(UserInformation::Table, UserInformation::Id),
                     )
                     .to_owned(),
@@ -37,13 +36,13 @@ impl MigrationTrait for Migration {
 
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         manager
-            .drop_table(Table::drop().table(Vault::Table).to_owned())
+            .drop_table(Table::drop().table(BookmarkCollection::Table).to_owned())
             .await
     }
 }
 
 #[derive(DeriveIden)]
-pub enum Vault {
+pub enum BookmarkCollection {
     Table,
     Id,
     Name,
