@@ -19,12 +19,13 @@ Mobile Vault Shared Database service
 
 ### Installing
 
+1. Add the package with cargo
+
+```sh
+cargo add --git https://github.com/opeolluwa/bookmark_database_codegen --tag <TAG>  bookmark_database_codegen
+```
+
 ```toml
-[dependencies]
-vault_database = { git = "https://github.com/opeolluwa/vault_database", version = "0.1.0", features = [
-    "entities",
-    "migration",
-] }
 sea-orm = { version = "1.0.0-rc.5", features = [
     "sqlx-postgres",
     "runtime-tokio-rustls",
