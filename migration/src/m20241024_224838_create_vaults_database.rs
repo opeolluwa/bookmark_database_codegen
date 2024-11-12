@@ -17,11 +17,11 @@ impl MigrationTrait for Migration {
                     .col(string(Vault::Description))
                     .col(uuid(Vault::UserId).not_null())
                     .col(
-                        timestamp_with_time_zone(Vault::CreatedAt)
+                        date_time(Vault::CreatedAt)
                             .default(Expr::current_timestamp()),
                     )
                     .col(
-                        timestamp_with_time_zone(Vault::UpdatedAt)
+                        date_time(Vault::UpdatedAt)
                             .default(Expr::current_timestamp()),
                     )
                     .foreign_key(

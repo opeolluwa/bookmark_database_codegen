@@ -17,14 +17,8 @@ impl MigrationTrait for Migration {
                     .col(string(VaultEntry::Title).not_null())
                     .col(string(VaultEntry::Description))
                     .col(uuid(VaultEntry::VaultId).unique_key())
-                    .col(
-                        timestamp_with_time_zone(VaultEntry::CreatedAt)
-                            .default(Expr::current_timestamp()),
-                    )
-                    .col(
-                        timestamp_with_time_zone(VaultEntry::UpdatedAt)
-                            .default(Expr::current_timestamp()),
-                    )
+                    .col(date_time(VaultEntry::CreatedAt).default(Expr::current_timestamp()))
+                    .col(date_time(VaultEntry::UpdatedAt).default(Expr::current_timestamp()))
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-vault-to-vault-entry-id")

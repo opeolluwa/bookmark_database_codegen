@@ -21,22 +21,14 @@ pub enum Relation {
         from = "Column::UserId",
         to = "super::user_information::Column::Id",
         on_update = "NoAction",
-        on_delete = "Cascade"
+        on_delete = "NoAction"
     )]
     UserInformation,
-    #[sea_orm(has_many = "super::vault_entries::Entity")]
-    VaultEntries,
 }
 
 impl Related<super::user_information::Entity> for Entity {
     fn to() -> RelationDef {
         Relation::UserInformation.def()
-    }
-}
-
-impl Related<super::vault_entries::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::VaultEntries.def()
     }
 }
 

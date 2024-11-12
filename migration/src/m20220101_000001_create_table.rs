@@ -19,11 +19,11 @@ impl MigrationTrait for Migration {
                     .col(string(UserInformation::Email).unique_key().not_null())
                     .col(string(UserInformation::Password))
                     .col(
-                        timestamp_with_time_zone(UserInformation::CreatedAt)
+                        date_time(UserInformation::CreatedAt)
                             .default(Expr::current_timestamp()),
                     )
                     .col(
-                        timestamp_with_time_zone(UserInformation::UpdatedAt)
+                        date_time(UserInformation::UpdatedAt)
                             .default(Expr::current_timestamp()),
                     )
                     .to_owned(),
