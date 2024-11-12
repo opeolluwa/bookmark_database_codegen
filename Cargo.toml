@@ -1,14 +1,20 @@
 [package]
 name = "bookmark_database_codegen"
-version = "0.5.2"
+version = "0.5.3"
+description = "bookmark databse migration and entities, support PostgreSQL and Sqlite"
 edition = "2021"
+
 
 [workspace]
 members = ["./entities", "./migration"]
+package.version = "0.5.3"
+package.edition = "2021"
+package.description = "bookmark databse migration and entities, support PostgreSQL and Sqlite"
+
 
 [dependencies]
 entities = { path = "./entities", version = "*" }
-# migration = { path = "./migration", version = "*" }
+migration = { path = "./migration", version = "*" }
 
 
 [features]
@@ -24,4 +30,3 @@ sea-orm = { version = "1.0.0-rc.5", features = [
     "macros",
 ] }
 tokio = { version = "1.41.1", features = ["full"] }
-
